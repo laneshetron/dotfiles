@@ -22,3 +22,6 @@ fi
 export PATH=$PATH:/usr/local/bin
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# Add go to PATH
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
