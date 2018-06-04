@@ -1,2 +1,4 @@
+Include config.d/*
+
 VisualHostKey=yes
 ForwardAgent yes
