@@ -129,7 +129,7 @@ done
 echo "All applications have been restarted, but a reboot is recommended for all changes to take effect."
 
 ## Application setup
-BREW_PKGS=(aircrack-ng autoconf automake cmake curl gdb git go gpg htop kafka knock nmap protobuf pypy3 python3 spoof-mac the_silver_searcher tmux unrar watch wget zstd)
+BREW_PKGS=(aircrack-ng autoconf automake cmake curl gdb git go gpg htop kafka knock nmap node protobuf pypy3 python3 spoof-mac the_silver_searcher tmux unrar watch wget zstd)
 
 # Install Homebrew
 # This is reasonably insecure, may want to cache this somewhere
@@ -159,20 +159,21 @@ mv ~/Downloads/Atom.app/ /Applications/.
 
 ## Terminal setup
 
-wget -O ~/Downloads/solarized.zip http://ethanschoonover.com/solarized/files/solarized.zip
-unzip -q ~/Downloads/solarized.zip -d ~/Downloads
-open ~/Downloads/solarized/osx-terminal.app-colors-solarized/xterm-256color/Solarized\ Dark\ xterm-256color.terminal
+if wget -t 2 -O ~/Downloads/solarized.zip http://ethanschoonover.com/solarized/files/solarized.zip; then
+    unzip -q ~/Downloads/solarized.zip -d ~/Downloads
+    open ~/Downloads/solarized/osx-terminal.app-colors-solarized/xterm-256color/Solarized\ Dark\ xterm-256color.terminal
 
-# Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
+    # Only use UTF-8 in Terminal.app
+    defaults write com.apple.terminal StringEncodings -array 4
 
-# Set Solarized Dark as default
-defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark xterm-256color"
-defaults write com.apple.terminal "Startup Window Settings" -string "Solarized Dark xterm-256color"
+    # Set Solarized Dark as default
+    defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark xterm-256color"
+    defaults write com.apple.terminal "Startup Window Settings" -string "Solarized Dark xterm-256color"
 
-# Custom Terminal config
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Pro:shellExitAction 1" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Solarized\ Dark\ xterm-256color:shellExitAction 1" ~/Library/Preferences/com.apple.Terminal.plist
+    # Custom Terminal config
+    /usr/libexec/PlistBuddy -c "Set \"Window Settings\":Pro:shellExitAction 1" ~/Library/Preferences/com.apple.Terminal.plist
+    /usr/libexec/PlistBuddy -c "Set \"Window Settings\":Solarized\ Dark\ xterm-256color:shellExitAction 1" ~/Library/Preferences/com.apple.Terminal.plist
+fi
 
 # Install custom config
 wget -O ~/Downloads/term-config.zip "https://drive.google.com/uc?export=download&id=0BwvyireKY5moNk4wcWx6NU5XZnc"
@@ -184,16 +185,6 @@ wget -O ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/
 wget -O ~/Downloads/AnonymousPro.zip http://www.marksimonson.com/assets/content/fonts/AnonymousPro-1.002.zip
 unzip -q ~/Downloads/AnonymousPro.zip -d ~/Downloads
 open ~/Downloads/AnonymousPro-1.002.001/Anonymous\ Pro.ttf
-
-# Install Node
-if command -v npm 2>/dev/null; then
-    echo "Node js is already installed"
-else
-    echo "Installing Node js v4"
-    brew tap homebrew/versions
-    brew install homebrew/versions/node4-lts
-fi
-node --version
 
 # Checkout github personal projects
 git clone git@github.com:laneshetron/monopoly.git ~/monopoly
