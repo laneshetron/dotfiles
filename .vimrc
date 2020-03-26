@@ -17,3 +17,8 @@ colorscheme solarized
 hi LineNr ctermbg=none ctermfg=Brown guibg=none guifg=Brown
 hi SignColumn ctermbg=none guibg=none
 hi NonText ctermfg=Blue ctermbg=none guibg=none
+
+" Return to line position on reopen "
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
