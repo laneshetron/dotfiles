@@ -140,6 +140,7 @@ BREW_PKGS=(aircrack-ng autoconf automake cmake curl gdb git go gpg htop kafka kn
 brew update
 
 brew cask install java
+brew cask install rectangle
 
 for pkg in "${BREW_PKGS[@]}"; do
     if brew list -1 | grep -q "^${pkg}\$"; then
