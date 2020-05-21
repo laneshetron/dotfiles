@@ -44,6 +44,9 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # maybe?
 #defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
+# Display battery percentage
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 1
