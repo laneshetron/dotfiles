@@ -132,7 +132,7 @@ done
 echo "All applications have been restarted, but a reboot is recommended for all changes to take effect."
 
 ## Application setup
-BREW_PKGS=(aircrack-ng autoconf automake cmake curl gdb git go gpg htop kafka knock kubernetes-cli nmap node protobuf pypy3 python3 redis spoof-mac the_silver_searcher tmux unrar watch wget zstd)
+BREW_PKGS=(aircrack-ng autoconf automake cmake curl gdb git go gpg htop kafka knock kubernetes-cli nmap node protobuf pypy3 python3 redis spoof-mac the_silver_searcher terraform tmux unrar watch wget zstd)
 
 # Install Homebrew
 # This is reasonably insecure, may want to cache this somewhere
@@ -149,6 +149,9 @@ for pkg in "${BREW_PKGS[@]}"; do
         brew install $pkg
     fi
 done
+
+# Enable terraform tab completion
+terraform -install-autocomplete
 
 # Install git-fame-rb
 sudo gem install git_fame
